@@ -1,11 +1,14 @@
-const form1 = document.querySelector('#form');
+
+const form = document.querySelector('form');
 const emailInput = document.querySelector('#email');
 const messageInput = document.querySelector('#message');
 
 
-form1.addEventListener('submit', function(event) {
+form.addEventListener('submit', function(event) {
 
   event.preventDefault();
+
+
 
   const emailValue = emailInput.value.trim();
   if (!emailValue.match(/^\S+@\S+\.\S+$/)) {
@@ -23,5 +26,5 @@ form1.addEventListener('submit', function(event) {
   }
 
 
-  form1.submit();
+  form.submit();
 });

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php if(file_exists('./logicals/'.$keres['fajl'].'.php')) { include("./logicals/{$keres['fajl']}.php"); } ?>
 <!DOCTYPE html>
 <html>
 
@@ -16,22 +18,27 @@
 		<header class="container-fluid">
 			<header>
 				<img src="pics/logo.png" alt="csacskamacska logo">
+				<?php if (isset($_SESSION['login'])) { ?>Bejlentkezve: <strong><?= $_SESSION['csn'] . " " . $_SESSION['un'] . " (" . $_SESSION['login'] . ")" ?></strong><?php } ?>
 			</header>
 			<div class="container-fluid">
 				<aside id="nav">
 					<nav class="d-flex justify-content-end">
-						<ul class="nav flex-row">
+						<ul id="nav-ul" class="nav flex-row">
 							<?php foreach ($oldalak as $url => $oldal) { ?>
-								<li<?= (($oldal == $keres) ? ' class="active"' : '') ?> class="nav-item">
-									<a id="nav-link" class="nav-link" href="index.php<?= ($url == '/') ? '' : ('?oldal=' . $url) ?>">
-										<?= $oldal['szoveg'] ?>
-									</a>
-									</li>
+								<?php if (!isset($_SESSION['login']) && $oldal['menun'][0] || isset($_SESSION['login']) && $oldal['menun'][1]) { ?>
+									<li<?= (($oldal == $keres) ? ' class="active"' : '') ?> class="nav-item">
+										<a id="nav-link" class="nav-link" href="index.php<?= ($url == '/') ? '' : ('?oldal=' . $url) ?>">
+											<?= $oldal['szoveg'] ?>
+										</a>
+										</li>
+									<?php } ?>
 								<?php } ?>
 						</ul>
 					</nav>
 				</aside>
-				<?php include("./templates/pages/{$keres['fajl']}.tpl.php"); ?>
+				<div id="content">
+					<?php include("./templates/pages/{$keres['fajl']}.tpl.php"); ?>
+				</div>
 			</div>
 		</header>
 	</div>
