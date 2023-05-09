@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $name = test_input($_POST["name"]);
@@ -37,3 +38,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 ?>
+=======
+>>>>>>> 4d2e03e6627f1b22fc108d96d222eb7ac4adba5b
