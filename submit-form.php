@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: " . $email;
 
     if (mail($to, $subject, $body, $headers)) {
-      $success_message = "Your message has been sent!";
+      $success_message = "Üzenek elküldve!";
     } else {
       $error_message = "Oops! Something went wrong. Please try again later.";
     }
