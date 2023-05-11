@@ -24,4 +24,4 @@
             }
         }
     }
-    header("Location: ../index.php?oldal=macskak")
+    header("Location: ../index.php?oldal=macskak");
