@@ -1,9 +1,9 @@
 <?php
 try {
     $dbh = new PDO(
-        'mysql:host=localhost;dbname=gyakorlat7',
-        'root',
-        '',
+        'mysql:host=mysql.omega:3306;dbname=csacskamacska',
+        'csacskamacska',
+        'csacskamacska',
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
     );
     $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
@@ -13,7 +13,8 @@ try {
 try {
         $stmt->execute();
         echo '<table>';
-        echo '<tr><th>Name</th><th>Email</th><th>Message</th><th>Idopont</th></tr>';
+        echo '<thead><tr><th scope="col">Name</th><th scope="col">Email</th><th scope="col">Message</th><th scope="col">Idopont</th></tr></thead>';
+        echo '<tbody>';
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo '<tr>';
             echo '<td>' . $row['name'] . '</td>';
@@ -22,11 +23,11 @@ try {
             echo '<td>' . $row['idopont'] . '</td>';
             echo '</tr>';
         }
-        echo '</table>';
+        echo '</tbody></table>';
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo '<div class="alert alert-danger" role="alert">Error: ' . $e->getMessage() . '</div>';
     }
 } catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+    echo '<div class="alert alert-danger" role="alert">Connection failed: ' . $e->getMessage() . '</div>';
 }
 ?>

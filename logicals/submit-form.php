@@ -3,11 +3,9 @@
 $hibak = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  if(isset($_SESSION['login'])) { 
+  if (isset($_SESSION['login'])) {
     $name = $_SESSION['login'];
-  
-  }
-  else {
+  } else {
     $name = "Vendég";
   }
   $email = $_POST["email"];
@@ -31,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if ($hibak == 0) {
   try {
     $dbh = new PDO(
-      'mysql:host=localhost;dbname=gyakorlat7',
-      'root',
-      '',
+      'mysql:host=mysql.omega:3306;dbname=csacskamacska',
+      'csacskamacska',
+      'csacskamacska',
       array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
     );
     $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
@@ -42,7 +40,7 @@ if ($hibak == 0) {
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':message', $message);
-  
+
     try {
       $stmt->execute();
       echo "Sikeres uzenetkuldes!";

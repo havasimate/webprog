@@ -25,4 +25,3 @@
         }
     }
     header("Location: ../index.php?oldal=macskak")
-    ?>

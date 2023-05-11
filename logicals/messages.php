@@ -1,9 +1,9 @@
 <?php
 try {
     $dbh = new PDO(
-        'mysql:host=localhost;dbname=gyakorlat7',
-        'root',
-        '',
+        'mysql:host=mysql.omega:3306;dbname=csacskamacska',
+        'csacskamacska',
+        'csacskamacska',
         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)
     );
     $dbh->query('SET NAMES utf8 COLLATE utf8_hungarian_ci');
@@ -24,4 +24,3 @@ try {
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-?>
